@@ -1,9 +1,11 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="snapCards">
 	<head>
 		<title>SnapCards</title>
 	</head>
-	<body>
-		Welcome to SnapCards!
+	<body ng-controller="AppController as app">
+		Welcome, {{app.user.name}} to SnapCards!
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+		<script src="main.js"></script>
 	</body>
 </html>
