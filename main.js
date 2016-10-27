@@ -1,6 +1,31 @@
-angular.module('snapCards', ['ngMaterial'])
-  .controller('AppController', function() {
+var snapCards = angular.module('snapCards', ['ngMaterial', 'ngRoute']);
+ 
+snapCards.config(function($routeProvider) {
+        $routeProvider
+
+            // // route for the home page
+            // .when('/', {
+            //     templateUrl : 'pages/home.html',
+            //     controller  : 'homeController'
+            // })
+
+            // route for the about page
+            .when('/about', {
+                templateUrl : 'pages/about.html',
+                controller  : 'aboutController'
+            })
+
+            // // route for the contact page
+            // .when('/contact', {
+            //     templateUrl : 'pages/contact.html',
+            //     controller  : 'contactController'
+            // });
+    });
+
+snapCards.controller('AppController', function() {
     this.user = {
         name: 'Studious Sally'
     };
   });
+
+snapCards.controller('aboutController', function() {});
