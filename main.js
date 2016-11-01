@@ -8,11 +8,15 @@ snapCards.config(function($routeProvider, $mdThemingProvider, $mdIconProvider) {
         templateUrl: 'pages/home.html',
         controller: 'homeController'
     })
-
     // route for the about page
     .when('/about', {
         templateUrl: 'pages/about.html',
         controller: 'aboutController'
+    })
+    // route for the edit page
+    .when('/edit', {
+        templateUrl: 'pages/edit.html',
+        controller: 'editController'
     });
 
     $mdThemingProvider.theme('default')
@@ -41,7 +45,7 @@ snapCards.controller('AppController', function($location) {
 });
 
 snapCards.controller('aboutController', function() {});
-snapCards.controller('homeController', function($scope) {
+snapCards.controller('homeController', function($scope, $location) {
     $scope.MyDecks = [{
         name: 'Presidents',
         description: 'The presidents of the United States of America.',
@@ -63,7 +67,8 @@ snapCards.controller('homeController', function($scope) {
     }];
 
     $scope.edit = function edit(deck) {
-        alert('Edit '+deck.name);
+        // alert('Edit '+deck.name);
+        $scope.goTo('edit');
     };
 
     $scope.share = function share(deck) {
@@ -77,4 +82,10 @@ snapCards.controller('homeController', function($scope) {
     $scope.addNewDeck = function addNewDeck() {
         alert('Add New Deck pressed');
     };
+
+    $scope.goTo = function goTo(pageName){
+        $location.path('/'+pageName);
+    };
+
 });
+snapCards.controller('editController', function() {});
