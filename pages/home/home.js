@@ -11,8 +11,8 @@ angular.module('snapCards.home', ['ngMaterial', 'ngRoute'])
     }];
 
     $scope.PublicDecks = [{
-        name: 'Presidents',
-        description: 'The presidents of the United States of America.',
+        name: 'Tzars',
+        description: 'The Russian Tzars.',
         cards: [{}, {}, {}, {}, {}]
     }, {
         name: 'Periodic Table',
@@ -28,8 +28,24 @@ angular.module('snapCards.home', ['ngMaterial', 'ngRoute'])
     $scope.share = function share(deck) {
         // alert('Share '+deck.name);
         if(confirm("Are you sure you sure you want to share this deck?")){
-            $scope.PublicDecks.push(deck);
-            alert("Successfully Shared "+deck.name);
+            if($scope.PublicDecks.indexOf(deck)  === -1){
+                $scope.PublicDecks.push(deck);
+                alert("Successfully Shared "+deck.name);
+            } else {
+                alert("You have already shared this deck.");
+            }
+        }
+    };
+
+    $scope.save = function save(deck) {
+        // alert('Share '+deck.name);
+        if(confirm("Are you sure you sure you want to save this deck?")){
+            if($scope.MyDecks.indexOf(deck)  === -1){
+                $scope.MyDecks.push(deck);
+                alert("Successfully Saved "+deck.name);
+            } else {
+                alert("You have already saved this deck.");
+            }
         }
     };
 
