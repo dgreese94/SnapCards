@@ -1,0 +1,55 @@
+<div class="md-padding" layout="row" layout-wrap>
+  <section flex="66" class="md-padding" layout="column">
+    <h1>My Decks</h1>
+    <div flex ng-repeat="deck in MyDecks">
+      <md-card>
+        <md-card-title>
+          <md-card-title-text>
+            <span class="md-headline">{{deck.name}}</span>
+            <span class="md-subhead">{{deck.description}}</span>
+            <span class="md-subhead">Cards in Deck: {{deck.cards.length}}</span>
+          </md-card-title-text>
+          <md-card-title-media>
+            <div class="md-media-xl card-media"></div>
+          </md-card-title-media>
+        </md-card-title>
+        <md-card-actions layout="row" layout-align="end center">
+          <md-button ng-click="study(deck)">Study</md-button>
+          <md-button ng-click="edit(deck)">Edit</md-button>
+          <md-button ng-click="share(deck)">Share</md-button>
+        </md-card-actions>
+      </md-card>
+    </div>
+    <div layout="row" layout-align="end">
+      <md-button class="md-fab md-primary" ng-click="addNewDeck()">
+        <md-tooltip md-direction="left">
+          Add New Deck
+        </md-tooltip>
+        <md-icon md-svg-src="assests/svgs/ic_add_black_48px.svg"></md-icon>
+      </md-button>
+    </div>
+  </section>
+
+  <section flex="33" class="md-padding" layout="column" layout-align="end">
+    <h1>Public Decks</h1>
+    <div flex ng-repeat="deck in PublicDecks">
+      <md-card>
+        <md-card-title>
+          <md-card-title-text>
+            <span class="md-headline">{{deck.name}}</span>
+            <span class="md-subhead">{{deck.description}}</span>
+            <span class="md-subhead">Cards in Deck: {{deck.cards.length}}</span>
+          </md-card-title-text>
+          <md-card-title-media>
+            <div class="md-media-xl card-media"></div>
+          </md-card-title-media>
+        </md-card-title>
+        <md-card-actions layout="row" layout-align="end center">
+          <md-button ng-click="study(deck)">Study</md-button>
+          <md-button ng-click="edit(deck)">Edit</md-button>
+          <md-button ng-click="share(deck)">Share</md-button>
+        </md-card-actions>
+      </md-card>
+    </div>
+  </section>
+</div>
