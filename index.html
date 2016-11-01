@@ -22,9 +22,29 @@
 				<md-button class="md-icon-button" aria-label="Sign In">
 					<md-icon>input</md-icon>
 				</md-button>
-				<md-button class="md-icon-button" aria-label="More">
-					<md-icon>more_vert</md-icon>
-				</md-button>
+                <md-menu md-position-mode="target-right target">
+                    <md-button class="md-icon-button" aria-label="More"  ng-click="app.openMenu($mdOpenMenu, $event)">
+                        <md-icon>more_vert</md-icon>
+                    </md-button>
+                    <md-menu-content width="4">
+                        <md-menu-item>
+                            <md-button ng-click="app.goTo('about')">
+                                <div layout="row" flex>
+                                    <p flex>About Us</p>
+                                    <md-icon md-menu-align-target>school</md-icon>
+                                </div>
+                            </md-button>
+                        </md-menu-item>
+                        <md-menu-item>
+                            <md-button ng-click="">
+                                <div layout="row" flex>
+                                    <p flex>Contact Us</p>
+                                    <md-icon md-menu-align-target>mail</md-icon>
+                                </div>
+                            </md-button>
+                        </md-menu-item>
+                    </md-menu-content>
+                </md-menu>
 			</div>
 		</md-toolbar>
 	</md-content>
