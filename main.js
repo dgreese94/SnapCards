@@ -1,26 +1,31 @@
-var snapCards = angular.module('snapCards', ['ngMaterial', 'ngRoute']);
+var snapCards = angular.module('snapCards', ['ngMaterial', 
+                                             'ngRoute',
+                                             'snapCards.home',
+                                             'snapCards.edit',
+                                             'snapCards.study',
+                                             'snapCards.about']);
 
 snapCards.config(function($routeProvider, $mdThemingProvider, $mdIconProvider) {
     $routeProvider
 
     // route for the home page
     .when('/', {
-        templateUrl: 'pages/home.html',
+        templateUrl: 'pages/home/home.html',
         controller: 'homeController'
     })
     // route for the about page
     .when('/about', {
-        templateUrl: 'pages/about.html',
+        templateUrl: 'pages/about/about.html',
         controller: 'aboutController'
     })
     // route for the edit page
     .when('/edit', {
-        templateUrl: 'pages/edit.html',
+        templateUrl: 'pages/edit/edit.html',
         controller: 'editController'
     })
     // route for the edit page
     .when('/study', {
-        templateUrl: 'pages/study.html',
+        templateUrl: 'pages/study/study.html',
         controller: 'studyController'
     });
 
@@ -48,56 +53,3 @@ snapCards.controller('AppController', function($location) {
         $location.path('/'+pageName);
     }
 });
-
-snapCards.controller('aboutController', function() {});
-snapCards.controller('homeController', function($scope, $location) {
-    $scope.MyDecks = [{
-        name: 'Presidents',
-        description: 'The presidents of the United States of America.',
-        cards: [{}, {}, {}, {}, {}]
-    }, {
-        name: 'Geometry',
-        description: 'Name the shape.',
-        cards: [{}, {}, {}, {}, {}]
-    }];
-
-    $scope.PublicDecks = [{
-        name: 'Presidents',
-        description: 'The presidents of the United States of America.',
-        cards: [{}, {}, {}, {}, {}]
-    }, {
-        name: 'Periodic Table',
-        description: 'Name the Element.',
-        cards: [{}, {}, {}, {}, {}]
-    }];
-
-    $scope.edit = function edit(deck) {
-        // alert('Edit '+deck.name);
-        $scope.goTo('edit');
-    };
-
-    $scope.share = function share(deck) {
-        // alert('Share '+deck.name);
-        if(confirm("Are you sure you sure you want to share this deck?")){
-            $scope.PublicDecks.push(deck);
-            alert("Successfully Shared "+deck.name);
-        }
-    };
-
-    $scope.study = function study(deck) {
-        // alert('Study '+deck.name);
-        $scope.goTo('study');
-    };
-
-    $scope.addNewDeck = function addNewDeck() {
-        alert('Add New Deck pressed');
-        //edit with new?
-    };
-
-    $scope.goTo = function goTo(pageName){
-        $location.path('/'+pageName);
-    };
-
-});
-snapCards.controller('editController', function() {});
-snapCards.controller('studyController', function() {});
