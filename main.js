@@ -17,6 +17,11 @@ snapCards.config(function($routeProvider, $mdThemingProvider, $mdIconProvider) {
     .when('/edit', {
         templateUrl: 'pages/edit.html',
         controller: 'editController'
+    })
+    // route for the edit page
+    .when('/study', {
+        templateUrl: 'pages/study.html',
+        controller: 'studyController'
     });
 
     $mdThemingProvider.theme('default')
@@ -72,15 +77,21 @@ snapCards.controller('homeController', function($scope, $location) {
     };
 
     $scope.share = function share(deck) {
-        alert('Share '+deck.name);
+        // alert('Share '+deck.name);
+        if(confirm("Are you sure you sure you want to share this deck?")){
+            $scope.PublicDecks.push(deck);
+            alert("Successfully Shared "+deck.name);
+        }
     };
 
     $scope.study = function study(deck) {
-        alert('Study '+deck.name);
+        // alert('Study '+deck.name);
+        $scope.goTo('study');
     };
 
     $scope.addNewDeck = function addNewDeck() {
         alert('Add New Deck pressed');
+        //edit with new?
     };
 
     $scope.goTo = function goTo(pageName){
@@ -89,3 +100,4 @@ snapCards.controller('homeController', function($scope, $location) {
 
 });
 snapCards.controller('editController', function() {});
+snapCards.controller('studyController', function() {});
