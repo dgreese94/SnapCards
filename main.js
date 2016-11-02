@@ -20,12 +20,12 @@ snapCards.config(function($routeProvider, $mdThemingProvider, $mdIconProvider) {
         controller: 'aboutController'
     })
     // route for the edit page
-    .when('/edit', {
+    .when('/edit/:id', {
         templateUrl: 'pages/edit/edit.html',
         controller: 'editController'
     })
     // route for the edit page
-    .when('/study', {
+    .when('/study/:id', {
         templateUrl: 'pages/study/study.html',
         controller: 'studyController'
     });

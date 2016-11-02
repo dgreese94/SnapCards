@@ -6,7 +6,7 @@ angular.module('snapCards.home', ['ngMaterial', 'ngRoute', 'snapCards.deckservic
 
     $scope.edit = function edit(deck) {
         // alert('Edit '+deck.name);
-        $scope.goTo('edit');
+        $location.path('/edit/'+deck.id);
     };
 
     $scope.share = function share(deck) {
@@ -34,16 +34,11 @@ angular.module('snapCards.home', ['ngMaterial', 'ngRoute', 'snapCards.deckservic
     };
 
     $scope.study = function study(deck) {
-        // alert('Study '+deck.name);
-        $scope.goTo('study');
+        $location.path('/study/'+deck.id);
     };
 
     $scope.addNewDeck = function addNewDeck() {
         alert('Add New Deck pressed');
         //edit with new?
-    };
-
-    $scope.goTo = function goTo(pageName){
-        $location.path('/'+pageName);
     };
 });
