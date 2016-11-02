@@ -3,7 +3,8 @@ var snapCards = angular.module('snapCards', ['ngMaterial',
                                              'snapCards.home',
                                              'snapCards.edit',
                                              'snapCards.study',
-                                             'snapCards.about']);
+                                             'snapCards.about',
+                                             'snapCards.deckservice']);
 
 snapCards.config(function($routeProvider, $mdThemingProvider, $mdIconProvider) {
     $routeProvider

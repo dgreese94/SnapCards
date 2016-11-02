@@ -1,40 +1,8 @@
-angular.module('snapCards.home', ['ngMaterial', 'ngRoute'])
-.controller('homeController', function($scope, $location) {
-    $scope.MyDecks = [{
-        name: 'Presidents',
-        description: 'The presidents of the United States of America.',
-        cards: [{}, {}, {}, {}, {}]
-    }, {
-        name: 'Geometry',
-        description: 'Name the shape.',
-        cards: [{}, {}, {}, {}, {}]
-    }, {
-        name: 'Geometry 2',
-        description: 'Name the shape.',
-        cards: [{}, {}, {}, {}, {}]
-    }, {
-        name: 'French Revolution',
-        description: 'French Revolution review.',
-        cards: [{}, {}, {}, {}, {}]
-    }, {
-        name: 'Civil War',
-        description: 'American Civil War.',
-        cards: [{}, {}, {}, {}, {}]
-    }, {
-        name: 'Times Tables',
-        description: 'Multiply up to 12.',
-        cards: [{}, {}, {}, {}, {}]
-    }];
+angular.module('snapCards.home', ['ngMaterial', 'ngRoute', 'snapCards.deckservice'])
+.controller('homeController', function($scope, $location, snapAPI) {
+    $scope.MyDecks = snapAPI.getMyDecks();
 
-    $scope.PublicDecks = [{
-        name: 'Tzars',
-        description: 'The Russian Tzars.',
-        cards: [{}, {}, {}, {}, {}]
-    }, {
-        name: 'Periodic Table',
-        description: 'Name the Element.',
-        cards: [{}, {}, {}, {}, {}]
-    }];
+    $scope.PublicDecks = snapAPI.getPublicDecks();
 
     $scope.edit = function edit(deck) {
         // alert('Edit '+deck.name);
@@ -45,7 +13,7 @@ angular.module('snapCards.home', ['ngMaterial', 'ngRoute'])
         // alert('Share '+deck.name);
         if(confirm("Are you sure you sure you want to share this deck?")){
             if($scope.PublicDecks.indexOf(deck)  === -1){
-                $scope.PublicDecks.push(deck);
+                snapAPI.shareDeck(deck);
                 alert("Successfully Shared "+deck.name);
             } else {
                 alert("You have already shared this deck.");
@@ -57,7 +25,7 @@ angular.module('snapCards.home', ['ngMaterial', 'ngRoute'])
         // alert('Share '+deck.name);
         if(confirm("Are you sure you sure you want to save this deck?")){
             if($scope.MyDecks.indexOf(deck)  === -1){
-                $scope.MyDecks.push(deck);
+                snapAPI.saveDeck(deck);
                 alert("Successfully Saved "+deck.name);
             } else {
                 alert("You have already saved this deck.");
