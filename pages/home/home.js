@@ -8,6 +8,22 @@ angular.module('snapCards.home', ['ngMaterial', 'ngRoute'])
         name: 'Geometry',
         description: 'Name the shape.',
         cards: [{}, {}, {}, {}, {}]
+    }, {
+        name: 'Geometry 2',
+        description: 'Name the shape.',
+        cards: [{}, {}, {}, {}, {}]
+    }, {
+        name: 'French Revolution',
+        description: 'French Revolution review.',
+        cards: [{}, {}, {}, {}, {}]
+    }, {
+        name: 'Civil War',
+        description: 'American Civil War.',
+        cards: [{}, {}, {}, {}, {}]
+    }, {
+        name: 'Times Tables',
+        description: 'Multiply up to 12.',
+        cards: [{}, {}, {}, {}, {}]
     }];
 
     $scope.PublicDecks = [{
