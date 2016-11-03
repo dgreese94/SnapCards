@@ -43,6 +43,16 @@ angular.module('snapCards.deckservice', ['ngMaterial', 'ngRoute'])
         name: 'Periodic Table',
         description: 'Name the Element.',
         cards: [{}, {}, {}, {}, {}]
+    }, {
+        id: 9,
+        name: 'Colors',
+        description: 'Name the Color',
+        cards: [{}, {}, {}, {}, {}]
+    }, {
+        id: 10,
+        name: 'Music Scales',
+        description: '-',
+        cards: [{}]
     }];
 
     this.getDeck = function( deckID ){

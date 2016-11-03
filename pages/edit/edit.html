@@ -1,8 +1,46 @@
-<div class="md-padding" layout="row">
-    <div flex="33" layout="column">
+<div class="md-padding" layout="row" ng-cloak>
+    <div flex="20" layout="column" layout-fill layout-padding>
         <h1 class="md-title">{{deck.name}}</h1>
+        <md-content flex layout-padding>
+            <md-card ng-repeat="card in deck.cards">
+              <md-card-title>
+                <md-card-title-text>
+                  <span class="md-subhead">place holder</span>
+                </md-card-title-text>
+                <md-card-title-media>
+                  <div class="md-media-xl card-media"></div>
+                </md-card-title-media>
+              </md-card-title>
+              <md-card-actions layout="row" layout-align="end center">
+              </md-card-actions>
+            </md-card>
+        </md-content>
     </div>
-    <div flex="66">
-        
+    <md-divider flex="1"></md-divider>
+    <div flex="79" layout-fill layout-padding layout="row">
+        <md-card flex="50">
+          <md-card-title>
+            <md-card-title-text>
+              <span class="md-subhead">place holder</span>
+            </md-card-title-text>
+            <md-card-title-media>
+              <div class="md-media-xl card-media"></div>
+            </md-card-title-media>
+          </md-card-title>
+          <md-card-actions layout="row" layout-align="end center">
+          </md-card-actions>
+        </md-card>
+        <md-card flex="50">
+          <md-card-title>
+            <md-card-title-text>
+              <span class="md-subhead">place holder</span>
+            </md-card-title-text>
+            <md-card-title-media>
+              <div class="md-media-xl card-media"></div>
+            </md-card-title-media>
+          </md-card-title>
+          <md-card-actions layout="row" layout-align="end center">
+          </md-card-actions>
+        </md-card>
     </div>
 </div>
