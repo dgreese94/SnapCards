@@ -88,4 +88,15 @@ angular.module('snapCards.deckservice', ['ngMaterial', 'ngRoute'])
     this.saveDeck = function(deck){
         MyDecks.push(deck);
     }
+
+    this.updateDeckCards = function(deckID, cards){
+        var i;
+
+        for (i in MyDecks){
+            if (MyDecks[i].id === deckID){
+                MyDecks[i].cards = cards;
+                return;
+            }
+        }
+    }
 });

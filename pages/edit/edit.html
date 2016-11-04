@@ -1,7 +1,16 @@
 <div class="md-padding" layout="row" ng-cloak>
     <div flex="20" layout="column" layout-fill layout-padding>
-        <h1 class="md-title">{{deck.name}}</h1>
-        <md-content flex layout-padding>
+        <md-toolbar layout="row">
+            <h1 class="md-title">{{deck.name}}</h1>
+            <span flex></span>
+            <md-button class="md-fab md-mini md-hue-3" ng-click="addCard()">
+                <md-tooltip md-direction="bottom">
+                  Add New Card
+                </md-tooltip>
+                <md-icon>add</md-icon>
+            </md-button>
+        </md-toolbar>
+        <md-content flex layout-padding style="height: 700px;">
             <md-card ng-repeat="card in deck.cards">
               <md-card-title>
                 <md-card-title-text>
