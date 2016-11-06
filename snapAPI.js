@@ -5,7 +5,7 @@ angular.module('snapCards.deckservice', ['ngMaterial', 'ngRoute'])
         id: 1,
         name: 'Presidents',
         description: 'The presidents of the United States of America.',
-        cards: [{ front:{text:"", media:""}, back:{text:"", media:""}}, { front:{text:"", media:""}, back:{text:"", media:""}}, { front:{text:"", media:""}, back:{text:"", media:""}}, { front:{text:"", media:""}, back:{text:"", media:""}}, { front:{text:"", media:""}, back:{text:"", media:""}}]
+        cards: [{ front:{text:"Who is the first president of the Unitied States?", media:""}, back:{text:"George Washington", media:""}}, { front:{text:"", media:""}, back:{text:"", media:""}}, { front:{text:"", media:""}, back:{text:"", media:""}}, { front:{text:"", media:""}, back:{text:"", media:""}}, { front:{text:"", media:""}, back:{text:"", media:""}}]
     }, {
         id: 2,
         name: 'Geometry',

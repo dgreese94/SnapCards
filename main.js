@@ -47,7 +47,8 @@ snapCards.config(function($routeProvider, $mdThemingProvider, $mdIconProvider) {
 
 snapCards.controller('AppController', function($location) {
     this.user = {
-        name: 'Studious Sally'
+        name: 'Studious Sally',
+        loggedIn: false
     };
 
     this.openMenu = function($mdOpenMenu, ev) {
@@ -57,52 +58,17 @@ snapCards.controller('AppController', function($location) {
 
     this.goTo = function(pageName){
         $location.path('/'+pageName);
-    }
+    };
+    
+    var _this = this;
+    this.goHome = function() {
+        if (_this.user.loggedIn) {
+            $location.path('/home');
+        } else {
+            $location.path('/');
+        }
+    };
 });
 snapCards.controller('indexController', function() {});
 
 snapCards.controller('aboutController', function() {});
-snapCards.controller('homeController', function($scope, $location) {
-    $scope.MyDecks = [{
-        name: 'Presidents',
-        description: 'The presidents of the United States of America.',
-        cards: [{}, {}, {}, {}, {}]
-    }, {
-        name: 'Geometry',
-        description: 'Name the shape.',
-        cards: [{}, {}, {}, {}, {}]
-    }];
-
-    $scope.PublicDecks = [{
-        name: 'Presidents',
-        description: 'The presidents of the United States of America.',
-        cards: [{}, {}, {}, {}, {}]
-    }, {
-        name: 'Periodic Table',
-        description: 'Name the Element.',
-        cards: [{}, {}, {}, {}, {}]
-    }];
-
-    $scope.edit = function edit(deck) {
-        // alert('Edit '+deck.name);
-        $scope.goTo('edit');
-    };
-
-    $scope.share = function share(deck) {
-        alert('Share '+deck.name);
-    };
-
-    $scope.study = function study(deck) {
-        alert('Study '+deck.name);
-    };
-
-    $scope.addNewDeck = function addNewDeck() {
-        alert('Add New Deck pressed');
-    };
-
-    $scope.goTo = function goTo(pageName){
-        $location.path('/'+pageName);
-    };
-
-});
-snapCards.controller('editController', function() {});

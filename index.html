@@ -17,10 +17,10 @@
 					<md-icon>menu</md-icon>
 				</md-button>
 				<h2>
-					<span>SnapCards</span>
+					<span class="title" ng-click="app.goHome()">SnapCards</span>
 				</h2>
 				<span flex></span>
-				<md-button class="md-icon-button" aria-label="Sign In">
+				<md-button ng-show="app.user.loggedIn" class="md-icon-button" aria-label="Sign In" ng-click="app.user.loggedIn = false; app.goHome();">
 					<md-icon>input</md-icon>
 				</md-button>
                 <md-menu md-position-mode="target-right target">
