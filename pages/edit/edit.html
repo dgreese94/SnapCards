@@ -11,7 +11,7 @@
             </md-button>
         </md-toolbar>
         <md-content flex layout-padding style="height: 700px;">
-            <md-card ng-repeat="card in deck.cards">
+            <md-card ng-repeat="card in deck.cards" ng-click="selectCard(card)" ng-class="{true: 'selectedcard', false:''}[card === selectedcard]">
               <md-card-title>
                 <md-card-title-media>
                   <div class="md-media-xl card-media"></div>
@@ -24,8 +24,8 @@
         </md-content>
     </div>
     <md-divider flex="1"></md-divider>
-    <div flex="79" layout-fill layout-padding layout="row">
-        <md-card flex="50">
+    <div flex="100" layout-padding layout="row" layout-align="center center">
+        <md-card flex="100">
           <md-card-title>
             <md-card-title-media>
               <div class="md-media-xl card-media"></div>
@@ -36,13 +36,13 @@
                 <label>Front Text</label>
                 <input type="text" ng-model="selectedcard.front.text">
               </md-input-container>
-              <md-input-container class="md-block" flex-gt-sm>
+              <!-- <md-input-container class="md-block" flex-gt-sm>
                 <label>Front Media</label><br><br>
                 <input type="file" ng-model="selectedcard.front.media">
-              </md-input-container>
+              </md-input-container> -->
           </md-card-content>
         </md-card>
-        <md-card flex="50">
+        <md-card flex="100">
           <md-card-title>
             <md-card-title-media>
               <div class="md-media-xl card-media"></div>
@@ -53,10 +53,10 @@
                 <label>Back Text</label>
                 <input ng-model="selectedcard.back.text">
               </md-input-container>
-              <md-input-container class="md-block" flex-gt-sm>
+              <!-- <md-input-container class="md-block" flex-gt-sm>
                 <label>Back Media</label><br><br>
                 <input type="file" ng-model="selectedcard.back.media">
-              </md-input-container>
+              </md-input-container> -->
           </md-card-content>
         </md-card>
     </div>

@@ -12,4 +12,8 @@ angular.module('snapCards.edit', ['ngMaterial', 'ngRoute', 'snapCards.deckservic
         snapAPI.updateDeckCards($scope.deck.id, $scope.deck.cards);
     }
 
+    $scope.selectCard = function selectCard( card ){
+        $scope.selectedcard = card;
+    }
+
 });
