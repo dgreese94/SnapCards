@@ -38,8 +38,12 @@
     <md-toolbar>
       <span>Public Decks</span>
     </md-toolbar>
-    <md-content layout="column" layout-padding style="height: 600px;">
-        <md-card flex="75" ng-repeat="deck in PublicDecks">
+    <md-content layout-padding style="height: 600px;">
+      <md-input-container layout>
+        <label>Search</label>
+        <input type="text" flex ng-model="publicSearch">
+      </md-input-container>
+        <md-card flex="" ng-repeat="deck in PublicDecks | filter: publicSearch">
           <md-card-title>
             <md-card-title-text>
               <span class="md-headline">{{deck.name}}</span>
