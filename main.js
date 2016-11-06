@@ -1,4 +1,10 @@
-var snapCards = angular.module('snapCards', ['ngMaterial', 'ngRoute']);
+var snapCards = angular.module('snapCards', ['ngMaterial', 
+                                             'ngRoute',
+                                             'snapCards.home',
+                                             'snapCards.edit',
+                                             'snapCards.study',
+                                             'snapCards.about',
+                                             'snapCards.deckservice']);
 
 snapCards.config(function($routeProvider, $mdThemingProvider, $mdIconProvider) {
     $routeProvider
@@ -10,18 +16,23 @@ snapCards.config(function($routeProvider, $mdThemingProvider, $mdIconProvider) {
 
     // route for the home page
     .when('/home', {
-        templateUrl: 'pages/home.html',
+        templateUrl: 'pages/home/home.html',
         controller: 'homeController'
     })
     // route for the about page
     .when('/about', {
-        templateUrl: 'pages/about.html',
+        templateUrl: 'pages/about/about.html',
         controller: 'aboutController'
     })
     // route for the edit page
-    .when('/edit', {
-        templateUrl: 'pages/edit.html',
+    .when('/edit/:id', {
+        templateUrl: 'pages/edit/edit.html',
         controller: 'editController'
+    })
+    // route for the edit page
+    .when('/study/:id', {
+        templateUrl: 'pages/study/study.html',
+        controller: 'studyController'
     });
 
     $mdThemingProvider.theme('default')

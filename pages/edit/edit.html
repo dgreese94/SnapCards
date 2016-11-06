@@ -1,0 +1,63 @@
+<div class="md-padding" layout="row" ng-cloak>
+    <div flex="20" layout="column" layout-fill layout-padding>
+        <md-toolbar layout="row">
+            <h1 class="md-title">{{deck.name}}</h1>
+            <span flex></span>
+            <md-button class="md-fab md-mini md-hue-3" ng-click="addCard()">
+                <md-tooltip md-direction="bottom">
+                  Add New Card
+                </md-tooltip>
+                <md-icon>add</md-icon>
+            </md-button>
+        </md-toolbar>
+        <md-content flex layout-padding style="height: 700px;">
+            <md-card ng-repeat="card in deck.cards" ng-click="selectCard(card)" ng-class="{true: 'selectedcard', false:''}[card === selectedcard]">
+              <md-card-title>
+                <md-card-title-media>
+                  <div class="md-media-xl card-media"></div>
+                </md-card-title-media>
+              </md-card-title>
+              <md-card-content>
+                <p>{{card.front.text}}</p>
+              </md-card-content>
+            </md-card>
+        </md-content>
+    </div>
+    <md-divider flex="1"></md-divider>
+    <div flex="100" layout-padding layout="row" layout-align="center center">
+        <md-card flex="100">
+          <md-card-title>
+            <md-card-title-media>
+              <div class="md-media-xl card-media"></div>
+            </md-card-title-media>
+          </md-card-title>
+          <md-card-content>
+              <md-input-container class="md-block" flex-gt-sm>
+                <label>Front Text</label>
+                <input type="text" ng-model="selectedcard.front.text">
+              </md-input-container>
+              <!-- <md-input-container class="md-block" flex-gt-sm>
+                <label>Front Media</label><br><br>
+                <input type="file" ng-model="selectedcard.front.media">
+              </md-input-container> -->
+          </md-card-content>
+        </md-card>
+        <md-card flex="100">
+          <md-card-title>
+            <md-card-title-media>
+              <div class="md-media-xl card-media"></div>
+            </md-card-title-media>
+          </md-card-title>
+          <md-card-content>
+              <md-input-container class="md-block" flex-gt-sm>
+                <label>Back Text</label>
+                <input ng-model="selectedcard.back.text">
+              </md-input-container>
+              <!-- <md-input-container class="md-block" flex-gt-sm>
+                <label>Back Media</label><br><br>
+                <input type="file" ng-model="selectedcard.back.media">
+              </md-input-container> -->
+          </md-card-content>
+        </md-card>
+    </div>
+</div>

@@ -1,0 +1,60 @@
+<div class="md-padding" layout="row" ng-cloak>
+  <section flex="66" class="md-padding" layout="column" layout-padding layout-margin>
+    <md-toolbar>
+      <span>My Decks</span>
+    </md-toolbar>
+    <md-content layout="row" layout-wrap style="height: 600px;">
+      <div flex="33" ng-repeat="deck in MyDecks">
+        <md-card>
+          <md-card-title>
+            <md-card-title-text>
+              <span class="md-headline">{{deck.name}}</span>
+              <span class="md-subhead">{{deck.description}}</span>
+              <span class="md-subhead">Cards in Deck: {{deck.cards.length}}</span>
+            </md-card-title-text>
+            <md-card-title-media>
+              <div class="md-media-xl card-media"></div>
+            </md-card-title-media>
+          </md-card-title>
+          <md-card-actions layout="row" layout-align="end center">
+            <md-button ng-click="study(deck)">Study</md-button>
+            <md-button ng-click="edit(deck)">Edit</md-button>
+            <md-button ng-click="share(deck)">Share</md-button>
+          </md-card-actions>
+        </md-card>
+      </div>
+    </md-content>
+    <div layout="row" layout-align="end">
+      <md-button class="md-fab md-primary" ng-click="addNewDeck()">
+        <md-tooltip md-direction="left">
+          Add New Deck
+        </md-tooltip>
+        <md-icon>add</md-icon>
+      </md-button>
+    </div>
+  </section>
+  <md-divider flex="2"></md-divider>
+  <section flex="33" class="md-padding" layout="column" layout-padding layout-margin>
+    <md-toolbar>
+      <span>Public Decks</span>
+    </md-toolbar>
+    <md-content layout="column" layout-padding style="height: 600px;">
+        <md-card flex="75" ng-repeat="deck in PublicDecks">
+          <md-card-title>
+            <md-card-title-text>
+              <span class="md-headline">{{deck.name}}</span>
+              <span class="md-subhead">{{deck.description}}</span>
+              <span class="md-subhead">Cards in Deck: {{deck.cards.length}}</span>
+            </md-card-title-text>
+            <md-card-title-media>
+              <div class="md-media-xl card-media"></div>
+            </md-card-title-media>
+          </md-card-title>
+          <md-card-actions layout="row" layout-align="end center">
+            <md-button ng-click="study(deck)">Study</md-button>
+            <md-button ng-click="save(deck)">Save</md-button>
+          </md-card-actions>
+        </md-card>
+    </md-content>
+  </section>
+</div>
