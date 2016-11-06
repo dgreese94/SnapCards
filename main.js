@@ -3,8 +3,13 @@ var snapCards = angular.module('snapCards', ['ngMaterial', 'ngRoute']);
 snapCards.config(function($routeProvider, $mdThemingProvider, $mdIconProvider) {
     $routeProvider
 
-    // route for the home page
     .when('/', {
+        templateUrl: 'pages/index.html',
+        controller: 'indexController'
+    })
+
+    // route for the home page
+    .when('/home', {
         templateUrl: 'pages/home.html',
         controller: 'homeController'
     })
@@ -43,6 +48,7 @@ snapCards.controller('AppController', function($location) {
         $location.path('/'+pageName);
     }
 });
+snapCards.controller('indexController', function() {});
 
 snapCards.controller('aboutController', function() {});
 snapCards.controller('homeController', function($scope, $location) {
