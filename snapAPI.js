@@ -55,6 +55,8 @@ angular.module('snapCards.deckservice', ['ngMaterial', 'ngRoute'])
         cards: [{ front:{text:"", media:""}, back:{text:"", media:""}}]
     }];
 
+    var current_id = 11;
+
     this.getDeck = function( deckID ){
         var i;
 
@@ -87,6 +89,21 @@ angular.module('snapCards.deckservice', ['ngMaterial', 'ngRoute'])
 
     this.saveDeck = function(deck){
         MyDecks.push(deck);
+    }
+
+    this.newDeck = function(){
+        var deck = {
+            id: current_id,
+            name: 'Unnamed deck',
+            description: '',
+            cards: [{ front:{text:"", media:""}, back:{text:"", media:""}}]
+        };
+
+        current_id++;
+
+        this.saveDeck(deck);
+
+        return deck;
     }
 
     this.updateDeckCards = function(deckID, cards){

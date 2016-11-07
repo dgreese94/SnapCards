@@ -8,7 +8,10 @@
 <div layout="row" ng-cloak>
     <div flex="20" layout="column" layout-fill layout-padding>
         <md-toolbar layout="row">
-            <h1 class="md-title">{{deck.name}}</h1>
+            <md-input-container class="md-block" flex-gt-sm>
+                <label>Title</label>
+                <input type="text" ng-model="deck.name">
+            </md-input-container>
             <span flex></span>
             <md-button class="md-fab md-mini md-hue-3" ng-click="addCard()">
                 <md-tooltip md-direction="bottom">
@@ -18,6 +21,10 @@
             </md-button>
         </md-toolbar>
         <md-content flex layout-padding style="height: 700px;">
+            <md-input-container class="md-block">
+                <label>Description</label>
+                <textarea ng-model="deck.description" md-maxlength="150" rows="2" md-select-on-focus></textarea>
+            </md-input-container>
             <md-card ng-repeat="card in deck.cards" ng-click="selectCard(card)" ng-class="{true: 'selectedcard', false:''}[card === selectedcard]">
               <md-card-title>
                 <md-card-title-media>

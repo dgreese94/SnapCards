@@ -77,7 +77,6 @@ snapCards.controller('AppController', function($location) {
         }
     };
 });
-snapCards.controller('indexController', function() {});
 
 snapCards.directive('mainToolbar', function() {
     return {
@@ -87,3 +86,4 @@ snapCards.directive('mainToolbar', function() {
 })
 
 snapCards.controller('aboutController', function() {});
+snapCards.controller('indexController', function() {});
