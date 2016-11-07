@@ -1,14 +1,18 @@
 # SnapCards
 
+## Site
 [Go to our site!](http://snapcards.me)
 
-Welcome to SnapCards, the best web application for Flash card learning!
-
+## GitHub
 [GitHub](https://github.com/dgreese94/SnapCards)
+
+## Intro
+Welcome to SnapCards, the best web application for Flash card learning!
 
 This is a prototype that will be used for beta user testing.
 It has no back end services and is highly insecure. It is not intended to be used in production nor should it be.  
 
+## Structure
 The prototype was built using AngularJS, Angular Material, HTML, and CSS.
 
 The basic project structure is:
