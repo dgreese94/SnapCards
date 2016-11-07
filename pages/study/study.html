@@ -1,14 +1,52 @@
-<main-toolbar>
-    &nbsp;&nbsp;
-  <md-divider></md-divider>
-  <md-button ng-click="app.edit(deck)">
-     <md-icon>mode_edit</md-icon> Edit
-  </md-button>
-</main-toolbar>
-<div class="md-padding" layout="row">
-    <div flex>
-        <md-card>
-            Test
-        </md-card>
+<div layout="column" layout-fill>
+    <main-toolbar flex>
+        &nbsp;&nbsp;
+        <md-divider></md-divider>
+        <md-button ng-click="app.edit(deck)">
+            <md-icon>mode_edit</md-icon> Edit
+        </md-button>
+    </main-toolbar>
+    <div flex="grow">
+        <div flex layout="row" layout-fill>
+            
+            <div flex="none">
+                <md-button layout="column" layout-align="center center" layout-fill ng-disabled="currentCard == 0" ng-click="prevCard()">
+                    <span flex="initial"><md-icon>chevron_left</md-icon></span>
+                </md-button>
+            </div>
+            <div flex="auto" layout="column" layout-align="center center">
+                <md-card flex="60" style="width: 50%">
+                    <div class="content" flex="grow" layout="row" layout-align="center center" layout-padding>
+                        <h1 flex style="text-align: center;" ng-class="isFlipped?'answer':''">{{!isFlipped? deck.cards[currentCard].front.text : deck.cards[currentCard].back.text}}</h1>
+                    </div>
+                    <md-card-actions flex="shrink" style="margin-top:-3.5rem; margin-right:-1.5rem;" layout="row">
+                        <span flex></span>
+                        <md-button class="md-fab md-green" aria-label="Eat cake" ng-click="nextCard()" ng-show="isFlipped">
+                            <md-icon>check</md-icon>
+                            <md-tooltip md-direction="bottom">
+                                Correct
+                            </md-tooltip>
+                        </md-button>
+                        <md-button class="md-fab md-warn" aria-label="Eat cake" ng-click="nextCard()"  ng-show="isFlipped">
+                            <md-icon>close</md-icon>
+                            <md-tooltip md-direction="bottom">
+                                Incorrect
+                            </md-tooltip>
+                        </md-button>
+                        <md-button class="md-fab md-primary" aria-label="Eat cake" ng-click="flip()">
+                            <md-icon>autorenew</md-icon>
+                            <md-tooltip md-direction="bottom">
+                                Flip
+                            </md-tooltip>
+                        </md-button>
+                    </md-card-actions>
+                </md-card>
+            </div>
+            <div flex="none">
+                <md-button layout="column" layout-align="center center" layout-fill ng-disabled="currentCard == maxCard" ng-click="nextCard()">
+                    <span flex="initial"><md-icon>chevron_right</md-icon></span>
+                </md-button>
+            </div>
+        </div>
     </div>
 </div>
