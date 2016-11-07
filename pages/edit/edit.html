@@ -1,4 +1,11 @@
-<div class="md-padding" layout="row" ng-cloak>
+<main-toolbar>
+  &nbsp;&nbsp;
+  <md-divider></md-divider>
+  <md-button ng-click="app.study(deck)">
+      Study
+  </md-button>
+</main-toolbar>
+<div layout="row" ng-cloak>
     <div flex="20" layout="column" layout-fill layout-padding>
         <md-toolbar layout="row">
             <h1 class="md-title">{{deck.name}}</h1>

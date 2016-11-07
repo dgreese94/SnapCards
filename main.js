@@ -59,6 +59,14 @@ snapCards.controller('AppController', function($location) {
     this.goTo = function(pageName){
         $location.path('/'+pageName);
     };
+
+    this.edit = function edit(deck) {
+        $location.path('/edit/' + deck.id);
+    };
+
+    this.study = function edit(deck) {
+        $location.path('/study/' + deck.id);
+    };
     
     var _this = this;
     this.goHome = function() {
@@ -70,5 +78,12 @@ snapCards.controller('AppController', function($location) {
     };
 });
 snapCards.controller('indexController', function() {});
+
+snapCards.directive('mainToolbar', function() {
+    return {
+        templateUrl: 'pages/header.html',
+        transclude: true
+    }
+})
 
 snapCards.controller('aboutController', function() {});
