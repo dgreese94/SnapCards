@@ -1,7 +1,7 @@
 .selectedcard{
-    -moz-box-shadow: 1 1 5px orange;
-    -webkit-box-shadow: 1 1 5px orange;
-box-shadow: 1px 1px 5px orange;
+    -moz-box-shadow: 1 1 10px orange;
+    -webkit-box-shadow: 1 1 10px orange;
+box-shadow: 1px 1px 10px orange;
 }
 
 .title {

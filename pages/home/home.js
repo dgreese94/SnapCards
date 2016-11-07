@@ -38,7 +38,10 @@ angular.module('snapCards.home', ['ngMaterial', 'ngRoute', 'snapCards.deckservic
     };
 
     $scope.addNewDeck = function addNewDeck() {
-        alert('Add New Deck pressed');
+        // alert('Add New Deck pressed');
         //edit with new?
+        var deck = snapAPI.newDeck();
+
+        $location.path('/edit/'+deck.id);
     };
 });
