@@ -2,17 +2,17 @@
   &nbsp;&nbsp;
   <md-divider></md-divider>
   <md-button ng-click="app.study(deck)">
-      Study
+      <md-icon>library_books</md-icon> Study
   </md-button>
 </main-toolbar>
-<div layout="row" ng-cloak>
-    <div flex="20" layout="column" layout-fill layout-padding>
-        <md-toolbar layout="row">
+<div layout="row" ng-cloak layout-fill>
+    <div flex="20" layout="column" layout-fill>
+        <md-toolbar layout="row" layout-padding>
             <md-input-container class="md-block" flex-gt-sm>
                 <label>Title</label>
                 <input type="text" ng-model="deck.name">
             </md-input-container>
-            <span flex></span>
+            
             <md-button class="md-fab md-mini md-hue-3" ng-click="addCard()">
                 <md-tooltip md-direction="bottom">
                   Add New Card
@@ -20,58 +20,73 @@
                 <md-icon>add</md-icon>
             </md-button>
         </md-toolbar>
-        <md-content flex layout-padding style="height: 700px;">
+        <md-content flex layout-padding layout-fill>
             <md-input-container class="md-block">
                 <label>Description</label>
                 <textarea ng-model="deck.description" md-maxlength="150" rows="2" md-select-on-focus></textarea>
             </md-input-container>
-            <md-card ng-repeat="card in deck.cards" ng-click="selectCard(card)" ng-class="{true: 'selectedcard', false:''}[card === selectedcard]">
+            <md-card ng-repeat="card in deck.cards" ng-click="selectCard($index)" ng-class="{true: 'selectedcard', false:''}[card === selectedcard]">
+              <!--<md-card-title>
+                <md-card-title-media>
+                  <div class="md-media-xl card-media"></div>
+                </md-card-title-media>
+              </md-card-title>-->
+              <md-card-content>
+                <p style="text-overflow: ellipsis; overflow: hidden;">{{card.front.text? card.front.text : "&nbsp;"}}</p>
+                <md-divider></md-divider>
+                <p style="font-style: italic; text-overflow: ellipsis; overflow: hidden;">{{card.back.text? card.back.text : "&nbsp;"}}</p>
+              </md-card-content>
+            </md-card>
+        </md-content>
+    </div>
+    <md-divider flex="1"></md-divider>
+    <div layout="column" layout-fill flex layout-align="start center">
+      <div layout="row" layout-padding flex layout-fill>
+        <span flex></span>
+        <md-button class="md-fab" style="background-color:rgb(244, 67, 54)" aria-label="Eat cake" ng-click="deleteSelected()">
+            <md-icon>delete</md-icon>
+            <md-tooltip md-direction="left">
+              Delete Card
+            </md-tooltip>
+        </md-button>
+      </div>
+      <div layout="row" layout-fill layout-align="center center">
+        <div flex="100" layout-padding layout="row" layout-align="center center">
+            <md-card flex="50">
               <md-card-title>
                 <md-card-title-media>
                   <div class="md-media-xl card-media"></div>
                 </md-card-title-media>
               </md-card-title>
               <md-card-content>
-                <p>{{card.front.text? card.front.text : "&nbsp;"}}</p>
+                  <md-input-container class="md-block" flex-gt-sm>
+                    <label>Front Text</label>
+                    <input type="text" ng-model="selectedcard.front.text">
+                  </md-input-container>
+                  <!-- <md-input-container class="md-block" flex-gt-sm>
+                    <label>Front Media</label><br><br>
+                    <input type="file" ng-model="selectedcard.front.media">
+                  </md-input-container> -->
               </md-card-content>
             </md-card>
-        </md-content>
-    </div>
-    <md-divider flex="1"></md-divider>
-    <div flex="100" layout-padding layout="row" layout-align="center center">
-        <md-card flex="100">
-          <md-card-title>
-            <md-card-title-media>
-              <div class="md-media-xl card-media"></div>
-            </md-card-title-media>
-          </md-card-title>
-          <md-card-content>
-              <md-input-container class="md-block" flex-gt-sm>
-                <label>Front Text</label>
-                <input type="text" ng-model="selectedcard.front.text">
-              </md-input-container>
-              <!-- <md-input-container class="md-block" flex-gt-sm>
-                <label>Front Media</label><br><br>
-                <input type="file" ng-model="selectedcard.front.media">
-              </md-input-container> -->
-          </md-card-content>
-        </md-card>
-        <md-card flex="100">
-          <md-card-title>
-            <md-card-title-media>
-              <div class="md-media-xl card-media"></div>
-            </md-card-title-media>
-          </md-card-title>
-          <md-card-content>
-              <md-input-container class="md-block" flex-gt-sm>
-                <label>Back Text</label>
-                <input ng-model="selectedcard.back.text">
-              </md-input-container>
-              <!-- <md-input-container class="md-block" flex-gt-sm>
-                <label>Back Media</label><br><br>
-                <input type="file" ng-model="selectedcard.back.media">
-              </md-input-container> -->
-          </md-card-content>
-        </md-card>
+            <md-card flex="50">
+              <md-card-title>
+                <md-card-title-media>
+                  <div class="md-media-xl card-media"></div>
+                </md-card-title-media>
+              </md-card-title>
+              <md-card-content>
+                  <md-input-container class="md-block" flex-gt-sm>
+                    <label>Back Text</label>
+                    <input ng-model="selectedcard.back.text">
+                  </md-input-container>
+                  <!-- <md-input-container class="md-block" flex-gt-sm>
+                    <label>Back Media</label><br><br>
+                    <input type="file" ng-model="selectedcard.back.media">
+                  </md-input-container> -->
+              </md-card-content>
+            </md-card>
+        </div>
+      </div>
     </div>
 </div>

@@ -3,6 +3,7 @@ angular.module('snapCards.edit', ['ngMaterial', 'ngRoute', 'snapCards.deckservic
     $scope.deck = snapAPI.getDeck(parseInt($routeParams.id, 10));
 
     $scope.selectedcard = $scope.deck.cards[0];
+    $scope.selectedcardIndex = 0;
 
     $scope.addCard = function addCard(){
         $scope.deck.cards.push({ front:{text:"", media:""}, back:{text:"", media:""}});
@@ -12,8 +13,23 @@ angular.module('snapCards.edit', ['ngMaterial', 'ngRoute', 'snapCards.deckservic
         snapAPI.updateDeckCards($scope.deck.id, $scope.deck.cards);
     }
 
-    $scope.selectCard = function selectCard( card ){
-        $scope.selectedcard = card;
+    $scope.selectCard = function selectCard(index){
+        $scope.selectedcard = $scope.deck.cards[index];
+        $scope.selectedcardIndex = index;
+    }
+
+    $scope.deleteSelected = function deleteSelected() {
+        $scope.deck.cards.splice($scope.selectedcardIndex, 1);
+
+        if($scope.deck.cards.length == 0) {
+            $scope.addCard();
+        }
+
+        if($scope.selectedcardIndex === $scope.deck.cards.length) {
+            $scope.selectCard($scope.selectedcardIndex - 1);
+        } else {
+           $scope.selectCard($scope.selectedcardIndex);
+        }
     }
 
 });

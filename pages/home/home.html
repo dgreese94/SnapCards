@@ -1,26 +1,28 @@
 <main-toolbar></main-toolbar>
-<div class="md-padding" layout="row" ng-cloak>
-  <section flex="66" class="md-padding" layout="column" layout-padding layout-margin>
+<div layout="row" ng-cloak>
+  <section flex="66" layout="column">
     <md-toolbar>
-      <span>My Decks</span>
+      <div class="md-toolbar-tools">
+        <h2 flex><span><md-icon>list</md-icon> My Decks</span></h2>
+      </div>
     </md-toolbar>
-    <md-content layout="row" layout-wrap style="height: 600px;">
+    <md-content layout="row" layout-padding layout-wrap style="height: 600px;">
       <div flex="33" ng-repeat="deck in MyDecks">
         <md-card>
           <md-card-title>
             <md-card-title-text>
               <span class="md-headline">{{deck.name}}</span>
               <span class="md-subhead">{{deck.description}}</span>
-              <span class="md-subhead">Cards in Deck: {{deck.cards.length}}</span>
+              <span class="md-subhead" style="font-style: italic;">{{deck.cards.length}} cards</span>
             </md-card-title-text>
             <md-card-title-media>
               <div class="md-media-xl card-media"></div>
             </md-card-title-media>
           </md-card-title>
-          <md-card-actions layout="row" layout-align="end center">
-            <md-button ng-click="study(deck)">Study</md-button>
-            <md-button ng-click="edit(deck)">Edit</md-button>
-            <md-button ng-click="share(deck)">Share</md-button>
+          <md-card-actions layout="row" layout-align="end center" layout-margin>
+            <md-button ng-click="study(deck)"><md-icon>library_books</md-icon> Study</md-button>
+            <md-button ng-click="edit(deck)"><md-icon>mode_edit</md-icon> Edit</md-button>
+            <md-button ng-click="share(deck)"><md-icon>share</md-icon> Share</md-button>
           </md-card-actions>
         </md-card>
       </div>
@@ -35,9 +37,11 @@
     </div>
   </section>
   <md-divider flex="2"></md-divider>
-  <section flex="33" class="md-padding" layout="column" layout-padding layout-margin>
-    <md-toolbar>
-      <span>Public Decks</span>
+  <section flex="33" layout="column">
+    <md-toolbar class="md-hue-1">
+      <div class="md-toolbar-tools">
+        <h2 flex><span><md-icon>share</md-icon> Public Decks</span></h2>
+      </div>
     </md-toolbar>
     <md-content layout-padding style="height: 600px;">
       <md-input-container layout>
@@ -49,15 +53,15 @@
             <md-card-title-text>
               <span class="md-headline">{{deck.name}}</span>
               <span class="md-subhead">{{deck.description}}</span>
-              <span class="md-subhead">Cards in Deck: {{deck.cards.length}}</span>
+              <span class="md-subhead" style="font-style: italic;">{{deck.cards.length}} cards</span>
             </md-card-title-text>
             <md-card-title-media>
               <div class="md-media-xl card-media"></div>
             </md-card-title-media>
           </md-card-title>
-          <md-card-actions layout="row" layout-align="end center">
-            <md-button ng-click="study(deck)">Study</md-button>
-            <md-button ng-click="save(deck)">Save</md-button>
+          <md-card-actions layout="row" layout-align="end center" layout-margin>
+            <md-button ng-click="study(deck)"><md-icon>library_books</md-icon> Study</md-button>
+            <md-button ng-click="save(deck)"><md-icon>mode_edit</md-icon> Save</md-button>
           </md-card-actions>
         </md-card>
     </md-content>
