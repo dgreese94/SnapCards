@@ -45,10 +45,29 @@ snapCards.config(function($routeProvider, $mdThemingProvider, $mdIconProvider) {
       .defaultIconSet('img/icons/sets/core-icons.svg', 24);
 });
 
-snapCards.controller('AppController', function($location) {
+snapCards.controller('AppController', function($location, $scope) {
     this.user = {
-        name: 'Studious Sally',
+        email: '',
+        password: '',
+        teacher: false,
         loggedIn: false
+    };
+
+    $scope.signup = false;
+    $scope.isTeach = "";
+    
+
+    $scope.newAccount = function newAccount(){
+        $scope.signup = true;
+    };
+
+    $scope.back = function back() {
+        $scope.signup = false;
+    };
+
+    $scope.create = function create(){
+        _this.user.loggedIn = true;
+        _this.goHome();
     };
 
     this.openMenu = function($mdOpenMenu, ev) {

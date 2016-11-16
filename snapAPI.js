@@ -57,6 +57,16 @@ angular.module('snapCards.deckservice', ['ngMaterial', 'ngRoute'])
 
     var current_id = 11;
 
+    var users = [{
+        email: 'teacher@school.edu',
+        password: 'teacher',
+        teacher: true
+    },{
+        email: 'student@school.edu',
+        password: 'student',
+        teacher: false
+    }]
+
     this.getDeck = function( deckID ){
         var i;
 

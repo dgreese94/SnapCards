@@ -15,9 +15,15 @@
 								<label>Password</label>
 								<input ng-model="user.password" type="password">
 							</md-input-container>
+							<md-input-container ng-if="signup" layout>
+								<label>Teacher Code</label>
+								<input ng-model="isTeach">
+							</md-input-container>
 							<md-input-container layout="row">
-								<button md-button class="md-raised md-primary" flex type="submit">Login</button>
-								<md-button class="" flex>Sign Up</md-button>
+								<button md-button ng-if="!signup" class="md-raised md-primary" flex type="submit">Login</button>
+								<md-button ng-if="!signup" class="md-raised md-secondary" ng-click="newAccount()" flex>Sign Up</md-button>
+								<button md-button ng-if="signup" class="md-raised md-primary" ng-click="back()" flex type="submit">Existing Account</button>
+								<md-button ng-if="signup" class="md-raised md-secondary" ng-click="create()" flex>Sign Up</md-button>
 							</md-input-container>
 						</form>
 					</md-content>
