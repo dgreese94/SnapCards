@@ -2,9 +2,13 @@
     <main-toolbar flex>
         &nbsp;&nbsp;
         <md-divider></md-divider>
-        <md-button ng-click="app.edit(deck)">
-            <md-icon>mode_edit</md-icon> Edit
-        </md-button>
+        <div class="md-toolbar-tools">
+            <md-button ng-click="app.edit(deck)">
+                <md-icon>mode_edit</md-icon> Edit
+            </md-button>
+            <span flex></span>
+            <h2><span>{{currentCard}} / {{maxCard}}</span></h2>
+        </div>
     </main-toolbar>
     <div flex="grow">
         <div flex layout="row" layout-fill>
@@ -14,20 +18,35 @@
                     <span flex="initial"><md-icon>chevron_left</md-icon></span>
                 </md-button>
             </div>
-            <div flex="auto" layout="column" layout-align="center center">
-                <md-card flex="60" style="width: 50%">
+            <div flex="auto" layout="column" layout-align="center center" ng-switch="currentCard == maxCard">
+                <md-card flex="60" style="width: 50%" ng-switch-when="true">
+                    <div class="content" flex="grow" layout="column" layout-align="center center" layout-padding>
+                        <div flex layout="row" layout-fill>
+                            <h1 flex style="text-align: center;">
+                                Correct: {{$parent.correct}}
+                            </h1>
+                            <h1 flex style="text-align: center;">
+                                Missed: {{$parent.missed}}
+                            </h1>
+                        </div>
+                        <div flex>
+                            <md-button class="md-raised" ng-click="retry()">Retry</md-button>
+                        </div>
+                    </div>
+                </md-card>
+                <md-card flex="60" style="width: 50%" ng-switch-default="">
                     <div class="content" flex="grow" layout="row" layout-align="center center" layout-padding>
                         <h1 flex style="text-align: center;" ng-class="isFlipped?'answer':''">{{!isFlipped? deck.cards[currentCard].front.text : deck.cards[currentCard].back.text}}</h1>
                     </div>
                     <md-card-actions flex="shrink" style="margin-top:-3.5rem; margin-right:-1.5rem;" layout="row">
                         <span flex></span>
-                        <md-button class="md-fab md-green" aria-label="Eat cake" ng-click="nextCard()" ng-show="isFlipped">
+                        <md-button class="md-fab md-green" aria-label="Eat cake" ng-click="correctCard()" ng-show="isFlipped">
                             <md-icon>check</md-icon>
                             <md-tooltip md-direction="bottom">
                                 Correct
                             </md-tooltip>
                         </md-button>
-                        <md-button class="md-fab md-warn" aria-label="Eat cake" ng-click="nextCard()"  ng-show="isFlipped">
+                        <md-button class="md-fab md-warn" aria-label="Eat cake" ng-click="missedCard()"  ng-show="isFlipped">
                             <md-icon>close</md-icon>
                             <md-tooltip md-direction="bottom">
                                 Incorrect
