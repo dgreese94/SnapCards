@@ -2,9 +2,11 @@
   <main-toolbar flex>
     &nbsp;&nbsp;
     <md-divider></md-divider>
-    <md-button ng-click="app.study(deck)">
-      <md-icon>library_books</md-icon> Study
-    </md-button>
+    <div class="md-toolbar-tools">
+      <md-button ng-click="app.study(deck)">
+        <md-icon>library_books</md-icon> Study
+      </md-button>
+    </div>
   </main-toolbar>
   <div layout="row" flex="grow">
     <div flex="20" layout="column" layout-fill>
