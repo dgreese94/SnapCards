@@ -45,8 +45,8 @@ snapCards.config(function($routeProvider, $mdThemingProvider, $mdIconProvider) {
       .defaultIconSet('img/icons/sets/core-icons.svg', 24);
 });
 
-snapCards.controller('AppController', function($location, $scope) {
-    this.user = {
+snapCards.controller('AppController', function($location, $scope, snapAPI) {
+    $scope.user = {
         email: '',
         password: '',
         teacher: false,
@@ -54,8 +54,7 @@ snapCards.controller('AppController', function($location, $scope) {
     };
 
     $scope.signup = false;
-    $scope.isTeach = "";
-    
+    $scope.isTeach;
 
     $scope.newAccount = function newAccount(){
         $scope.signup = true;
@@ -66,7 +65,10 @@ snapCards.controller('AppController', function($location, $scope) {
     };
 
     $scope.create = function create(){
-        _this.user.loggedIn = true;
+        if($scope.isTeach !== '' ){
+            $scope.user.teacher = true;
+        }
+        $scope.user.loggedIn = true;
         _this.goHome();
     };
 
@@ -89,7 +91,8 @@ snapCards.controller('AppController', function($location, $scope) {
     
     var _this = this;
     this.goHome = function() {
-        if (_this.user.loggedIn) {
+        if ($scope.user.loggedIn) {
+            snapAPI.setActiveUser($scope.user);
             $location.path('/home');
         } else {
             $location.path('/');

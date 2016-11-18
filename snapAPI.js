@@ -65,7 +65,13 @@ angular.module('snapCards.deckservice', ['ngMaterial', 'ngRoute'])
         email: 'student@school.edu',
         password: 'student',
         teacher: false
-    }]
+    }];
+
+    var active_user = {
+        email: 'student@school.edu',
+        password: 'student',
+        teacher: false
+    }
 
     this.getDeck = function( deckID ){
         var i;
@@ -125,5 +131,13 @@ angular.module('snapCards.deckservice', ['ngMaterial', 'ngRoute'])
                 return;
             }
         }
+    }
+
+    this.setActiveUser = function( user ){
+        active_user = user;
+    }
+
+    this.getActiveUser = function(){
+        return active_user;
     }
 });

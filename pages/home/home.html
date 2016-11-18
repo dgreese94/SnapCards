@@ -20,9 +20,10 @@
             </md-card-title-media>
           </md-card-title>
           <md-card-actions layout="row" layout-align="end center" layout-margin>
-            <md-button ng-click="study(deck)"><md-icon>library_books</md-icon> Study</md-button>
+            <md-button ng-if="!user.teacher" ng-click="study(deck)"><md-icon>library_books</md-icon> Study</md-button>
+            <md-button ng-if="user.teacher" ng-click="assign($event, deck)"><md-icon>library_books</md-icon> Assign</md-button>
             <md-button ng-click="edit(deck)"><md-icon>mode_edit</md-icon> Edit</md-button>
-            <md-button ng-click="share(deck)"><md-icon>share</md-icon> Share</md-button>
+            <md-button ng-click="share($event, deck)"><md-icon>share</md-icon> Share</md-button>
           </md-card-actions>
         </md-card>
       </div>
@@ -61,7 +62,7 @@
           </md-card-title>
           <md-card-actions layout="row" layout-align="end center" layout-margin>
             <md-button ng-click="study(deck)"><md-icon>library_books</md-icon> Study</md-button>
-            <md-button ng-click="save(deck)"><md-icon>mode_edit</md-icon> Save</md-button>
+            <md-button ng-click="save($event, deck)"><md-icon>mode_edit</md-icon> Save</md-button>
           </md-card-actions>
         </md-card>
     </md-content>
