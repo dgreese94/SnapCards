@@ -35,9 +35,35 @@ snapCards.config(function($routeProvider, $mdThemingProvider, $mdIconProvider) {
         controller: 'studyController'
     });
 
+    $mdThemingProvider.definePalette('Navaho', {
+        '50': 'ffebee',
+        '100': 'ffcdd2',
+        '200': 'ef9a9a',
+        '300': 'e57373',
+        '400': 'ef5350',
+        '500': 'f44336',
+        '600': 'e53935',
+        '700': 'd32f2f',
+        '800': 'c62828',
+        '900': 'b71c1c',
+        'A100': 'ff8a80',
+        'A200': 'ff5252',
+        'A400': 'ff1744',
+        'A700': 'd50000',
+        'contrastDefaultColor': 'light',    // whether, by default, text (contrast)
+                                            // on this palette should be dark or light
+
+        'contrastDarkColors': ['50', '100', //hues which contrast should be 'dark' by default
+         '200', '300', '400', 'A100'],
+        'contrastLightColors': undefined    // could also specify this if default was 'dark'
+    });
+
     $mdThemingProvider.theme('default')
-        .primaryPalette('amber')
-        .accentPalette('brown');
+        .primaryPalette('amazingPaletteName')
+
+    $mdThemingProvider.theme('default')
+        .primaryPalette('blue')
+        .accentPalette('orange');
 
     $mdIconProvider
       .iconSet("call", 'img/icons/sets/communication-icons.svg', 24)
@@ -65,8 +91,10 @@ snapCards.controller('AppController', function($location, $scope, snapAPI) {
     };
 
     $scope.create = function create(){
-        if($scope.isTeach !== '' ){
+        if($scope.isTeach !== undefined ){
             $scope.user.teacher = true;
+        } else {
+            $scope.user.teacher = false;
         }
         $scope.user.loggedIn = true;
         _this.goHome();
@@ -91,12 +119,22 @@ snapCards.controller('AppController', function($location, $scope, snapAPI) {
     
     var _this = this;
     this.goHome = function() {
-        if ($scope.user.loggedIn) {
-            snapAPI.setActiveUser($scope.user);
-            $location.path('/home');
-        } else {
-            $location.path('/');
+
+        if($scope.user.email !== '' && $scope.user.password !== ''){
+            if ($scope.user.loggedIn) {
+                snapAPI.setActiveUser($scope.user);
+                $location.path('/home');
+            } else {
+                $scope.user = {
+                    email: '',
+                    password: '',
+                    teacher: false,
+                    loggedIn: false
+                }
+                $location.path('/');
+            }
         }
+        
     };
 });
 

@@ -1,12 +1,12 @@
 <md-toolbar class="md-hue-2">
     <div class="md-toolbar-tools">
         <h2>
-            <span class="title" ng-click="app.goHome()">👌 SnapCards</span>
+            <span class="title" ng-click="app.goHome()">SnapCards</span>
         </h2>
         <div layout="row" ng-transclude="" flex>
         </div>
         <span flex></span>
-        <md-button ng-show="app.user.loggedIn" class="md-icon-button" aria-label="Sign In" ng-click="app.user.loggedIn = false; app.goHome();">
+        <md-button ng-show="user.loggedIn" class="md-icon-button" aria-label="Sign In" ng-click="user.loggedIn = false; app.goHome();">
             <md-icon>input</md-icon>
         </md-button>
         <md-menu md-position-mode="target-right target">

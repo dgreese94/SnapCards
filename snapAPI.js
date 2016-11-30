@@ -52,16 +52,6 @@ angular.module('snapCards.deckservice', ['ngMaterial', 'ngRoute'])
 
     var current_id = 10;
 
-    var users = [{
-        email: 'teacher@school.edu',
-        password: 'teacher',
-        teacher: true
-    },{
-        email: 'student@school.edu',
-        password: 'student',
-        teacher: false
-    }];
-
     var active_user = {
         email: 'student@school.edu',
         password: 'student',
