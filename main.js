@@ -80,7 +80,7 @@ snapCards.controller('AppController', function($location, $scope, snapAPI) {
     };
 
     $scope.signup = false;
-    $scope.isTeach;
+    $scope.isTeach = '';
 
     $scope.newAccount = function newAccount(){
         $scope.signup = true;
@@ -91,11 +91,6 @@ snapCards.controller('AppController', function($location, $scope, snapAPI) {
     };
 
     $scope.create = function create(){
-        if($scope.isTeach !== undefined ){
-            $scope.user.teacher = true;
-        } else {
-            $scope.user.teacher = false;
-        }
         $scope.user.loggedIn = true;
         _this.goHome();
     };

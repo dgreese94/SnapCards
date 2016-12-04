@@ -1,5 +1,5 @@
 angular.module('snapCards.home', ['ngMaterial', 'ngRoute', 'snapCards.deckservice'])
-.controller('homeController', function($scope, $location, $mdDialog, snapAPI) {
+.controller('homeController', function($scope, $location, $mdDialog, $mdToast, snapAPI) {
     $scope.MyDecks = snapAPI.getMyDecks();
 
     $scope.PublicDecks = snapAPI.getPublicDecks();
@@ -24,6 +24,7 @@ angular.module('snapCards.home', ['ngMaterial', 'ngRoute', 'snapCards.deckservic
         $mdDialog.show(confirm).then(function() {
             if($scope.PublicDecks.indexOf(deck)  === -1){
                 snapAPI.shareDeck(deck);
+                showToast('Shared '+ deck.name+ '.');
             }
         }, function() {});
     };
@@ -41,6 +42,7 @@ angular.module('snapCards.home', ['ngMaterial', 'ngRoute', 'snapCards.deckservic
         $mdDialog.show(confirm).then(function() {
             if($scope.MyDecks.indexOf(deck)  === -1){
                 snapAPI.saveDeck(deck);
+                showToast('Saved '+ deck.name+ ' to My Decks.');
             }
         }, function() {});
     };
@@ -58,7 +60,7 @@ angular.module('snapCards.home', ['ngMaterial', 'ngRoute', 'snapCards.deckservic
           .cancel('Cancel');
 
         $mdDialog.show(confirm).then(function(result) {
-          alert("Shared "+deck.name+ ' to '+ result +'.');
+          showToast("Shared "+deck.name+ ' to '+ result +'.');
         }, function() {});
     };
 
@@ -72,5 +74,15 @@ angular.module('snapCards.home', ['ngMaterial', 'ngRoute', 'snapCards.deckservic
         var deck = snapAPI.newDeck();
 
         $location.path('/edit/'+deck.id);
+    };
+
+    function showToast(toasttext) {
+
+        $mdToast.show(
+          $mdToast.simple()
+            .textContent(toasttext)
+            .position('bottom right')
+            .hideDelay(2000)
+        );
     };
 });
