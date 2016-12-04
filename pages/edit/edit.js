@@ -1,5 +1,5 @@
 angular.module('snapCards.edit', ['ngMaterial', 'ngRoute', 'snapCards.deckservice'])
-.controller('editController', function($scope, $routeParams, snapAPI) {
+.controller('editController', function($scope, $routeParams, $mdToast, snapAPI) {
     $scope.deck = snapAPI.getDeck(parseInt($routeParams.id, 10));
 
     $scope.selectedcard = $scope.deck.cards[0];
@@ -31,5 +31,19 @@ angular.module('snapCards.edit', ['ngMaterial', 'ngRoute', 'snapCards.deckservic
            $scope.selectCard($scope.selectedcardIndex);
         }
     }
+
+    $scope.save = function save(deck){
+        showToast('Saved Changes to '+ deck.name +'.');
+    } 
+
+    function showToast(toasttext) {
+
+        $mdToast.show(
+          $mdToast.simple()
+            .textContent(toasttext)
+            .position('bottom right')
+            .hideDelay(2000)
+        );
+    };
 
 });

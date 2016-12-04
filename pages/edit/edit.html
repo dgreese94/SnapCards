@@ -1,10 +1,13 @@
-<div layout="column" layout-fill>
+<div layout="column">
   <main-toolbar flex>
     &nbsp;&nbsp;
     <md-divider></md-divider>
     <div class="md-toolbar-tools">
-      <md-button ng-click="app.study(deck)">
-        <md-icon>library_books</md-icon> Study
+      <md-button ng-click="save(deck)">
+        <md-icon>save</md-icon> Save Changes
+      </md-button>
+      <md-button ng-click="save(deck); app.study(deck)">
+        <md-icon>library_books</md-icon> Save and Study
       </md-button>
     </div>
   </main-toolbar>
