@@ -65,6 +65,11 @@ snapCards.config(function($routeProvider, $mdThemingProvider, $mdIconProvider) {
         .primaryPalette('blue')
         .accentPalette('orange');
 
+    $mdThemingProvider.theme('dark', 'default')
+        .primaryPalette('blue')
+        .accentPalette('orange')
+        .dark();
+
     $mdIconProvider
       .iconSet("call", 'img/icons/sets/communication-icons.svg', 24)
       .iconSet("social", 'img/icons/sets/social-icons.svg', 24)
@@ -125,9 +130,11 @@ snapCards.controller('AppController', function($location, $scope, snapAPI) {
                     password: '',
                     teacher: false,
                     loggedIn: false
-                }
+                };
                 $location.path('/');
             }
+        } else {
+            $location.path('/');
         }
         
     };

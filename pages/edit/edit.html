@@ -9,12 +9,15 @@
       <md-button ng-click="save(deck); app.study(deck)">
         <md-icon>library_books</md-icon> Save and Study
       </md-button>
+      <md-button ng-click="save(deck); app.goHome()">
+        <md-icon>check</md-icon> Save and Exit
+      </md-button>
     </div>
   </main-toolbar>
   <div layout="row" flex="grow">
     <div flex="20" layout="column" layout-fill>
       <md-toolbar layout="row" layout-padding>
-        <md-input-container class="md-block" flex-gt-sm>
+        <md-input-container class="md-block md-hue-1 dark" flex-gt-sm>
           <label>Title</label>
           <input type="text" ng-model="deck.name">
         </md-input-container>
@@ -67,7 +70,7 @@
             <md-card-content>
               <md-input-container class="md-block" flex-gt-sm>
                 <label>Front Text</label>
-                <input type="text" ng-model="selectedcard.front.text">
+                <input type="text" ng-model="selectedcard.front.text" autofocus-on-select>
               </md-input-container>
               <!-- <md-input-container class="md-block" flex-gt-sm>
                     <label>Front Media</label><br><br>

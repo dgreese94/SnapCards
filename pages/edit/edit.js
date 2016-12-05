@@ -7,6 +7,7 @@ angular.module('snapCards.edit', ['ngMaterial', 'ngRoute', 'snapCards.deckservic
 
     $scope.addCard = function addCard(){
         $scope.deck.cards.push({ front:{text:"", media:""}, back:{text:"", media:""}});
+        $scope.selectCard($scope.deck.cards.length - 1);
     }
 
     $scope.saveDeck = function saveDeck(){
@@ -46,4 +47,13 @@ angular.module('snapCards.edit', ['ngMaterial', 'ngRoute', 'snapCards.deckservic
         );
     };
 
+}).directive('autofocusOnSelect', function() {
+    return {
+        restrict: 'A',
+        link: function(scope, elm) {
+            scope.$watch('selectedcard', function() {
+                elm[0].focus();
+            });
+        }
+    };
 });
